@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
+
 function App() {
+  
+  const [likes, addLikes] = useState(0);
+
+  function wordChange() {
+    if (likes === 1) {
+      return (likes + ' Like')
+    } else {
+      return (likes + ' Likes')
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => addLikes(likes + 1)} type="button">
+        {wordChange()}
+      </button>
     </div>
   );
 }
